@@ -42,8 +42,8 @@
             "period": "2021/11 - 2023/03",
             "achievements": [
                 "Develop automated nucleic acid extraction and qPCR detection reagents.",
-                "Pioneered development of lyophilized qPCR reagents (6+ months stability).",
-                "Managed production and purification of recombinant proteins (E. coli system).",
+                "Pioneered development of lyophilized qPCR reagents.",
+                "Managed production and purification of recombinant proteins.",
                 "Authored technical documentation for IVD medical devices (IVDR and EUA)."
             ]
         }
@@ -51,19 +51,11 @@
     "skill_categories": [
         {
             "category": "IVD product development",
-            "tags": ["ISO13485", "ISO14971", "IVDR", "QMS", "clinical performance evaluation"]
+            "tags": ["ISO13485", "ISO14971", "IVDR", "QMS"]
         },
         {
-            "category": "molecular biology techique",
-            "tags": ["nucleic acid extraction", "NAAT-based reagent", "reagent lyophilization", "gene designing"]
-        }
-    ],
-    "projects": [
-        {
-            "name": "個人化推薦系統 (Flask + Redis)",
-            "link": "https://github.com/your_project_link_1",
-            "stack": "Python, Flask, Redis",
-            "description": "設計並實作一個基於協同過濾的內容推薦系統。"
+            "category": "Molecular Biology",
+            "tags": ["nucleic acid extraction", "NAAT-based reagent", "lyophilization"]
         }
     ]
 }

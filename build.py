@@ -1,34 +1,44 @@
 import json
 import sys
+import os
+
 try:
     from jinja2 import Template
 except ImportError:
-    print("❌ 找不到 Jinja2 模組，請確認 build.yml 裡有安裝執行。")
+    print("❌ 錯誤：尚未安裝 jinja2。")
     sys.exit(1)
 
-def build_resume():
+def run_build():
     try:
-        # 讀取 JSON 資料
+        # 讀取資料
+        if not os.path.exists('resume_data.json'):
+            print("❌ 錯誤：找不到 resume_data.json")
+            return
+
         with open('resume_data.json', 'r', encoding='utf-8') as f:
-            resume_data = json.load(f)
-        
-        # 讀取 HTML 模板
+            data = json.load(f)
+
+        # 讀取模板
+        if not os.path.exists('template.html'):
+            print("❌ 錯誤：找不到 template.html")
+            return
+
         with open('template.html', 'r', encoding='utf-8') as f:
             template_str = f.read()
-        
-        # 使用 Jinja2 渲染
+
+        # 渲染
         template = Template(template_str)
-        output_html = template.render(data=resume_data)
-        
-        # 輸出 index.html
+        output = template.render(data=data)
+
+        # 產出
         with open('index.html', 'w', encoding='utf-8') as f:
-            f.write(output_html)
-            
-        print("✅ index.html 成功生成！")
+            f.write(output)
         
+        print("✅ index.html 成功更新")
+
     except Exception as e:
-        print(f"❌ 執行發生錯誤：{e}")
+        print(f"❌ 發生非預期錯誤: {e}")
         sys.exit(1)
 
 if __name__ == "__main__":
-    build_resume()
+    run_build()
