@@ -5,41 +5,166 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>陳冠中 (Guang-Zhong Chen/Jack Chen) - 履歷</title>
     <style>
-        body { font-family: sans-serif; line-height: 1.6; background-color: #f4f7f6; color: #333; padding: 20px; }
-        .container { max-width: 800px; margin: auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .header { text-align: center; border-bottom: 3px solid #007bff; padding-bottom: 20px; }
-        .section { margin-top: 20px; padding: 15px; border-left: 5px solid #007bff; background: #e9f5ff; }
-        h1 { color: #007bff; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; }
+        .container { max-width: 900px; margin: 20px auto; background-color: #ffffff; padding: 30px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 8px; }
+        .header { text-align: center; padding-bottom: 20px; border-bottom: 3px solid #007bff; margin-bottom: 30px; }
+        .header h1 { color: #007bff; }
+        .section { margin-bottom: 40px; padding: 15px; border-left: 5px solid #007bff; background-color: #e9f5ff; }
+        .section h2 { color: #333; margin-top: 0; border-bottom: 1px dashed #ccc; padding-bottom: 5px; }
+        .skill-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; }
+        .skill-list li { background-color: #007bff; color: white; padding: 5px 10px; margin-right: 10px; margin-bottom: 10px; border-radius: 4px; font-size: 0.9em; }
+        .profile-pic { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 4px solid #007bff; }
+        .edu-logo { height: 30px; vertical-align: middle; margin-left: 10px; }
+        .exp-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px; }
+        .company-logo { height: 40px; object-fit: contain; }
+        .exp-title { display: flex; align-items: center; }
+        .tab-radio { display: none; } 
+        .tab-nav { background-color: #285078; padding: 10px 0; text-align: center; display: flex; justify-content: center; }
+        .tab-label { color: white; margin: 0 15px; font-weight: bold; padding: 10px 15px; border-radius: 4px; cursor: pointer; transition: background-color 0.3s; }
+        .tab-content { display: none; padding: 20px 0; }
+        #tab1-radio:checked + .tab-label[for="tab1-radio"], #tab2-radio:checked + .tab-label[for="tab2-radio"], #tab3-radio:checked + .tab-label[for="tab3-radio"] { background-color: #007bff; }
+        #tab1-radio:checked ~ #content-1, #tab2-radio:checked ~ #content-2, #tab3-radio:checked ~ #content-3 { display: block; }
     </style>
 </head>
 <body>
     <div class="container">
         <header class="header">
+            <img src="./static/images/profile.jpg" alt="個人大頭照" class="profile-pic">
             <h1>陳冠中 (Guang-Zhong Chen/Jack Chen)</h1>
-            <p>Senior RD engineer</p>
         </header>
+        
+        <nav class="tab-nav">
+            <input type="radio" id="tab1-radio" name="tabs" class="tab-radio" checked>
+            <label for="tab1-radio" class="tab-label">個人資料與學歷</label>
+            <input type="radio" id="tab2-radio" name="tabs" class="tab-radio">
+            <label for="tab2-radio" class="tab-label">職涯與技能</label>
+            <input type="radio" id="tab3-radio" name="tabs" class="tab-radio">
+            <label for="tab3-radio" class="tab-label">未來區塊</label>
+        </nav>
 
-        <section class="section">
-            <h2>聯絡資訊</h2>
-            <p>Email: jack61903@gmail.com</p>
-            <p>電話: +886-928-550-996</p>
-            <p><a href="https://www.linkedin.com/in/%E5%86%A0%E4%B8%AD-%E9%99%B3-08082415a/">LinkedIn 檔案</a></p>
-        </section>
+        <div id="content-1" class="tab-content">
+            <section class="section">
+                <h2>聯絡資訊 (Contact Info)</h2>
+                <p><strong>姓名:</strong> 陳冠中 (Guang-Zhong Chen/Jack Chen)</p>
+                <p><strong>職稱:</strong> Senior RD engineer</p>
+                <p><strong>Email:</strong> <a href="mailto:jack61903@gmail.com">jack61903@gmail.com</a></p>
+                <p><strong>電話:</strong> +886-928-550-996</p>
+                <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/%E5%86%A0%E4%B8%AD-%E9%99%B3-08082415a/" target="_blank">點此查看</a></p>
+            </section>
 
-        <section class="section">
-            <h2>學歷</h2>
-            
-            <div>
-                <h3>國立嘉義大學</h3>
-                <p>微生物免疫與生物藥學系暨研究所 碩士 (2019/09 - 2020/09)</p>
-            </div>
-            
-            <div>
-                <h3>國立嘉義大學</h3>
-                <p>微生物免疫與生物藥學系 學士 (2015/09 - 2019/06)</p>
-            </div>
-            
-        </section>
+            <section class="section">
+                <h2>學歷 (Education)</h2>
+                
+                <div>
+                    <div class="exp-title">
+                        <h3>微生物免疫與生物藥學系暨研究所 碩士 - 國立嘉義大學</h3>
+                        <img src="./static/images/ncyu_logo.png" alt="校徽" class="edu-logo">
+                    </div>
+                    <p><em>2019/09 - 2020/09</em></p>
+                </div>
+                
+                <div>
+                    <div class="exp-title">
+                        <h3>微生物免疫與生物藥學系 學士 - 國立嘉義大學</h3>
+                        <img src="./static/images/ncyu_logo.png" alt="校徽" class="edu-logo">
+                    </div>
+                    <p><em>2015/09 - 2019/06</em></p>
+                </div>
+                
+            </section>
+        </div>
+
+        <div id="content-2" class="tab-content">
+            <section class="section">
+                <h2>工作經歷 (Experiences)</h2>
+                
+                <div style="margin-bottom: 30px;">
+                    <div class="exp-header">
+                        <h3>高級工程師/工程師 <small>@ 美商長典生技股份有限公司</small></h3>
+                        <img src="./static/images/changdian_logo.png" alt="Logo" class="company-logo">
+                    </div>
+                    <p><em>2023/03 - Now</em></p>
+                    <ul>
+                        
+                        <li>Alzheimer disease biomarker diagnosis platform development (BCR)</li>
+                        
+                        <li>Achieved platform's third-party certification with R^2 > 0.9 correlation to market-leader technology.</li>
+                        
+                        <li>Optimized diagnosis process, reducing verification time by 50%.</li>
+                        
+                        <li>Established SIP using Micro-FTIR for surface functional group identification.</li>
+                        
+                        <li>Executed Bio-FET trials and clinical performance evaluation design.</li>
+                        
+                        <li>Established documents for ISO 13485 certification.</li>
+                        
+                    </ul>
+                </div>
+                
+                <div style="margin-bottom: 30px;">
+                    <div class="exp-header">
+                        <h3>工程師 <small>@ 台灣圓點奈米技術股份有限公司</small></h3>
+                        <img src="./static/images/gene_logo.png" alt="Logo" class="company-logo">
+                    </div>
+                    <p><em>2021/11 - 2023/03</em></p>
+                    <ul>
+                        
+                        <li>Develop automated nucleic acid extraction and qPCR detection reagents.</li>
+                        
+                        <li>Pioneered development of lyophilized qPCR reagents (6+ months stability).</li>
+                        
+                        <li>Managed production and purification of recombinant proteins (E. coli system).</li>
+                        
+                        <li>Authored technical documentation for IVD medical devices (IVDR and EUA).</li>
+                        
+                    </ul>
+                </div>
+                
+            </section>
+
+            <section class="section">
+                <h2>核心技能 (Skills)</h2>
+                
+                <div style="margin-bottom: 20px;">
+                    <strong>IVD product development</strong>
+                    <ul class="skill-list">
+                        
+                        <li>ISO13485</li>
+                        
+                        <li>ISO14971</li>
+                        
+                        <li>IVDR</li>
+                        
+                        <li>QMS</li>
+                        
+                        <li>clinical performance evaluation</li>
+                        
+                    </ul>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <strong>molecular biology techique</strong>
+                    <ul class="skill-list">
+                        
+                        <li>nucleic acid extraction</li>
+                        
+                        <li>NAAT-based reagent</li>
+                        
+                        <li>reagent lyophilization</li>
+                        
+                        <li>gene designing</li>
+                        
+                    </ul>
+                </div>
+                
+            </section>
+        </div>
+
+        <div id="content-3" class="tab-content">
+            <section class="section">
+                <h2>此頁面內容規劃中...</h2>
+            </section>
+        </div>
     </div>
 </body>
 </html>
