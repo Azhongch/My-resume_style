@@ -1,0 +1,28 @@
+name: Build Resume Page
+
+on:
+  push:
+    branches: [ master ]  # 當你修改 master 分支時啟動
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 檢出程式碼
+        uses: actions/checkout@v3
+
+      - name: 設定 Python 環境
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: 執行 Python 轉換程式
+        run: python build.py
+
+      - name: 將產生的 index.html 推回倉庫
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add index.html
+          git commit -m "Auto-update resume index.html" || exit 0
+          git push
