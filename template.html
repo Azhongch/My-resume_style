@@ -1,3 +1,15 @@
-<h1>{{ data.name }}</h1>
-<p>職稱: {{ data.title }}</p>
-<p>Email: {{ data.contact.email }}</p>
+import json
+from jinja2 import Template
+
+with open('resume_data.json', 'r', encoding='utf-8') as f:
+    data = json.load(f)
+
+with open('template.html', 'r', encoding='utf-8') as f:
+    template_str = f.read()
+
+# 關鍵在下面這兩行
+template = Template(template_str)
+output_html = template.render(data=data)
+
+with open('index.html', 'w', encoding='utf-8') as f:
+    f.write(output_html)
