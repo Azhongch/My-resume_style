@@ -1,15 +1,17 @@
 {
-  "name": "陳冠中",
-  "experiences": [
-    {
-      "company": "美商長典生技...",
-      "title": "高級工程師",
-      "period": "2023/03 - Now"
+    "name": "陳冠中 (Jack Chen)",
+    "title": "Senior RD engineer",
+    "contact": {
+        "email": "jack61903@gmail.com",
+        "phone": "+886-928-550-996",
+        "linkedin": "https://www.linkedin.com/in/%E5%86%A0%E4%B8%AD-%E9%99%B3-08082415a/"
     },
-    {
-      "company": "台灣圓點奈米",
-      "title": "工程師",
-      "period": "2021/11 - 2023/03"
-    }
-  ]
+    "education": [
+        {
+            "school": "國立嘉義大學",
+            "degree": "碩士 - 微生物免疫與生物藥學系",
+            "period": "2019/09 - 2020/09"
+        }
+    ],
+    "skills": ["ISO13485", "IVDR", "Python", "Molecular Biology"]
 }
