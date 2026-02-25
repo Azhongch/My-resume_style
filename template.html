@@ -23,13 +23,12 @@
             object-fit: contain; 
         }
 
-        /* 修正 NCYU 放大後的位置對齊 */
+        /* 修正 NCYU 原始圖片留白過多導致的偏左問題 */
         .ncyu-special {
             transform: scale(1.4); 
-            /* 關鍵：將縮放基準點設為右側，防止放大後向左偏移 */
             transform-origin: right center; 
-            /* 額外補償：若視覺上仍微偏，可用 margin-right 微調 */
-            margin-right: 5px; 
+            /* 關鍵修改：使用負值的外邊距，將圖片強行往右拉，抵銷掉透明留白 */
+            margin-right: -20px; 
         }
 
         .company-logo { 
@@ -46,7 +45,7 @@
             margin-bottom: 5px;
         }
         
-        /* Tab 切換邏輯 */
+        /* Tab 切換邏輯核心 */
         .tab-radio { display: none; } 
         .tab-nav { background-color: #285078; padding: 10px 0; text-align: center; display: flex; justify-content: center; margin-bottom: 20px; }
         .tab-label { color: white; margin: 0 15px; font-weight: bold; padding: 10px 15px; border-radius: 4px; cursor: pointer; transition: background-color 0.3s; }
