@@ -62,7 +62,7 @@
         },
         {
             "category": "蛋白質分析技術",
-            "tags": ["SDS-PAGE", "Western blotting", "蛋白質生產與純化", "ELISA","凍乾保存配方設計"]
+            "tags": ["SDS-PAGE", "Western blotting", "蛋白質表現與純化", "ELISA","凍乾保存配方設計"]
         },
         {
             "category": "其他技術",
@@ -71,17 +71,17 @@
     ],
     "portfolio": [
         {
-            "type": "論文著作",
-            "items": [
+            "p_type": "論文著作",
+            "p_items": [
                 {
-                    "title": "碩士論文題目 (範例)",
+                    "title": "碩士論文題目 (範例項目)",
                     "desc": "描述你在微生物免疫領域的研究成果，例如特定蛋白質的表達或鑑定技術。"
                 }
             ]
         },
         {
-            "type": "專案成果",
-            "items": [
+            "p_type": "專案成果",
+            "p_items": [
                 {
                     "title": "阿茲海默症診斷平台開發專案",
                     "desc": "負責研發 BCR 技術應用於阿茲海默症生物標記之檢測，並成功通過第三方驗證。"

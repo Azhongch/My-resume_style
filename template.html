@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ data.name }} - 履歷</title>
     <style>
+        /* 基礎樣式 */
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; }
         
         .container { 
@@ -12,7 +13,7 @@
             margin: 20px auto; 
             background-color: #ffffff; 
             box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
-            border-radius: 8px; 
+            border-radius: 12px; 
             overflow: hidden; 
         }
 
@@ -58,10 +59,9 @@
         #tab2-radio:checked ~ #content-2,
         #tab3-radio:checked ~ #content-3 { display: block; }
 
-        /* 投資組合項目樣式 */
         .portfolio-item { margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 15px; }
-        .portfolio-item h3 { margin: 0; color: #007bff; }
-        .portfolio-item p { margin: 10px 0 0 0; font-size: 0.95em; }
+        .portfolio-item h3 { margin: 0; color: #007bff; font-size: 1.15em; }
+        .portfolio-item p { margin: 10px 0 0 0; font-size: 0.95em; color: #444; }
     </style>
 </head>
 <body>
@@ -149,19 +149,8 @@
             </div>
 
             <div id="content-3" class="tab-content">
-                {% for group in data.portfolio %}
-                <section class="section">
-                    <h2>{{ group.type }}</h2>
-                    {% for item in group.items %}
-                    <div class="portfolio-item">
-                        <h3>{{ item.title }}</h3>
-                        <p>{{ item.desc }}</p>
-                    </div>
-                    {% endfor %}
-                </section>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+                {% if data.portfolio %}
+                    {% for p_group in data.portfolio %}
+                    <section class="section">
+                        <h2>{{ p_group.p_type }}</h2>
+                        {% for p_item in p_group.p_items %}
