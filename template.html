@@ -16,17 +16,20 @@
         .skill-list li { background-color: #007bff; color: white; padding: 5px 10px; margin-right: 10px; margin-bottom: 10px; border-radius: 4px; font-size: 0.9em; }
         .profile-pic { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 4px solid #007bff; }
         
-        /* 圖片大小設定：改用寬度控制配合最大高度，能更有效校正不同比例的 Logo */
+        /* 圖片大小設定 */
         .edu-logo { 
-            width: 100px;         /* 增加寬度基準 */
-            max-height: 100px;    /* 限制最大高度，防止過大 */
+            width: 100px; 
+            max-height: 100px; 
             object-fit: contain; 
         }
 
-        /* 針對 NCYU 若還是覺得小，可以微調這個特定的 class (下面 HTML 需配合修改) */
+        /* 修正 NCYU 放大後的位置對齊 */
         .ncyu-special {
-            transform: scale(1.4); /* 視覺補償：將圖片等比例放大 20% */
-            transform-origin: right; /* 確保向右對齊 */
+            transform: scale(1.4); 
+            /* 關鍵：將縮放基準點設為右側，防止放大後向左偏移 */
+            transform-origin: right center; 
+            /* 額外補償：若視覺上仍微偏，可用 margin-right 微調 */
+            margin-right: 5px; 
         }
 
         .company-logo { 
@@ -43,108 +46,6 @@
             margin-bottom: 5px;
         }
         
-        /* Tab 切換邏輯核心 */
+        /* Tab 切換邏輯 */
         .tab-radio { display: none; } 
-        .tab-nav { background-color: #285078; padding: 10px 0; text-align: center; display: flex; justify-content: center; margin-bottom: 20px; }
-        .tab-label { color: white; margin: 0 15px; font-weight: bold; padding: 10px 15px; border-radius: 4px; cursor: pointer; transition: background-color 0.3s; }
-        .tab-content { display: none; padding: 10px 0; }
-
-        #tab1-radio:checked ~ .tab-nav .label1,
-        #tab2-radio:checked ~ .tab-nav .label2,
-        #tab3-radio:checked ~ .tab-nav .label3 { background-color: #007bff; }
-
-        #tab1-radio:checked ~ #content-1,
-        #tab2-radio:checked ~ #content-2,
-        #tab3-radio:checked ~ #content-3 { display: block; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <input type="radio" id="tab1-radio" name="tabs" class="tab-radio" checked>
-        <input type="radio" id="tab2-radio" name="tabs" class="tab-radio">
-        <input type="radio" id="tab3-radio" name="tabs" class="tab-radio">
-
-        <header class="header">
-            <img src="./static/images/profile.jpg" alt="個人大頭照" class="profile-pic">
-            <h1>{{ data.name }}</h1>
-        </header>
-        
-        <nav class="tab-nav">
-            <label for="tab1-radio" class="tab-label label1">個人資料與學歷</label>
-            <label for="tab2-radio" class="tab-label label2">職涯與技能</label>
-            <label for="tab3-radio" class="tab-label label3">未來區塊</label>
-        </nav>
-
-        <div id="content-1" class="tab-content">
-            <section class="section">
-                <h2>聯絡資訊 (Contact Info)</h2>
-                <p><strong>姓名:</strong> {{ data.name }}</p>
-                <p><strong>職稱:</strong> {{ data.title }}</p>
-                <p><strong>Email:</strong> <a href="mailto:{{ data.contact.email }}">{{ data.contact.email }}</a></p>
-                <p><strong>電話:</strong> {{ data.contact.phone }}</p>
-                <p><strong>LinkedIn:</strong> <a href="{{ data.contact.linkedin }}" target="_blank">點此查看</a></p>
-            </section>
-
-            <section class="section">
-                <h2>學歷 (Education)</h2>
-                {% for edu in data.education %}
-                <div style="margin-bottom: 25px; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
-                    <div class="flex-header">
-                        <div>
-                            <h3 style="margin: 0;">{{ edu.degree }}</h3>
-                            <strong style="color: #555;">{{ edu.school }}</strong>
-                        </div>
-                        <img src="{{ edu.logo }}" alt="校徽" 
-                             class="edu-logo {% if 'NCYU' in edu.logo %}ncyu-special{% endif %}">
-                    </div>
-                    <p style="margin-top: 5px;"><em>{{ edu.period }}</em></p>
-                </div>
-                {% endfor %}
-            </section>
-        </div>
-
-        <div id="content-2" class="tab-content">
-            <section class="section">
-                <h2>工作經歷 (Experiences)</h2>
-                {% for exp in data.experiences %}
-                <div style="margin-bottom: 30px; border-bottom: 1px solid #ddd; padding-bottom: 15px;">
-                    <div class="flex-header">
-                        <div>
-                            <h3 style="margin: 0;">{{ exp.title }}</h3>
-                            <strong style="color: #555;">{{ exp.company }}</strong>
-                        </div>
-                        <img src="{{ exp.logo }}" alt="Logo" class="company-logo">
-                    </div>
-                    <p style="margin-top: 5px;"><em>{{ exp.period }}</em></p>
-                    <ul>
-                        {% for ach in exp.achievements %}
-                        <li>{{ ach }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-                {% endfor %}
-            </section>
-
-            <section class="section">
-                <h2>核心技能 (Skills)</h2>
-                {% for cat in data.skill_categories %}
-                <div style="margin-bottom: 20px;">
-                    <strong>{{ cat.category }}</strong>
-                    <ul class="skill-list">
-                        {% for tag in cat.tags %}
-                        <li>{{ tag }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-                {% endfor %}
-            </section>
-        </div>
-
-        <div id="content-3" class="tab-content">
-            <section class="section">
-                <h2>此頁面內容規劃中...</h2>
-            </section>
-        </div>
-    </div>
-</body>
-</html>
+        .tab-nav { background-color: #285078; padding: 10px 0; text-align: center; display: flex; justify
