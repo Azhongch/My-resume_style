@@ -16,15 +16,30 @@
         .skill-list li { background-color: #007bff; color: white; padding: 5px 10px; margin-right: 10px; margin-bottom: 10px; border-radius: 4px; font-size: 0.9em; }
         .profile-pic { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 4px solid #007bff; }
         
-        /* 圖片大小設定 */
-        .edu-logo { height: 60px; width: auto; object-fit: contain; }
-        .company-logo { height: 80px; width: auto; object-fit: contain; }
+        /* 圖片大小設定：改用寬度控制配合最大高度，能更有效校正不同比例的 Logo */
+        .edu-logo { 
+            width: 80px;         /* 增加寬度基準 */
+            max-height: 80px;    /* 限制最大高度，防止過大 */
+            object-fit: contain; 
+        }
+
+        /* 針對 NCYU 若還是覺得小，可以微調這個特定的 class (下面 HTML 需配合修改) */
+        .ncyu-special {
+            transform: scale(1.2); /* 視覺補償：將圖片等比例放大 20% */
+            transform-origin: right; /* 確保向右對齊 */
+        }
+
+        .company-logo { 
+            width: 100px; 
+            max-height: 80px; 
+            object-fit: contain; 
+        }
 
         /* 通用的左右對齊容器 */
         .flex-header {
             display: flex;
-            justify-content: space-between; /* 文字靠左，圖片靠右 */
-            align-items: center;           /* 垂直居中對齊 */
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 5px;
         }
         
@@ -79,7 +94,8 @@
                             <h3 style="margin: 0;">{{ edu.degree }}</h3>
                             <strong style="color: #555;">{{ edu.school }}</strong>
                         </div>
-                        <img src="{{ edu.logo }}" alt="校徽" class="edu-logo">
+                        <img src="{{ edu.logo }}" alt="校徽" 
+                             class="edu-logo {% if 'NCYU' in edu.logo %}ncyu-special{% endif %}">
                     </div>
                     <p style="margin-top: 5px;"><em>{{ edu.period }}</em></p>
                 </div>
