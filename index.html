@@ -8,31 +8,28 @@
         /* 基礎樣式 */
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; }
         
-        /* 修改 Container：移除 padding 並加上 overflow: hidden 讓背景圖能貼齊邊緣並保持圓角 */
         .container { 
             max-width: 900px; 
             margin: 20px auto; 
             background-color: #ffffff; 
             box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
             border-radius: 8px; 
-            overflow: hidden; /* 關鍵：隱藏溢出的圖片邊緣 */
+            overflow: hidden; 
         }
 
-        /* 新增：人物背景照的區塊設定 */
         .hero-banner {
             width: 100%;
-            height: 280px; /* 這裡可以控制背景照的高度，可依你的圖片比例調整 */
+            height: 280px; 
             background-color: #ddd;
         }
         
         .hero-banner img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* 確保圖片填滿區塊且不變形 */
+            object-fit: cover; 
             display: block;
         }
 
-        /* 新增：內部內容區塊，將原本 container 的 padding 移到這裡 */
         .inner-content {
             padding: 30px;
         }
@@ -44,14 +41,12 @@
         .skill-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; }
         .skill-list li { background-color: #007bff; color: white; padding: 5px 10px; margin-right: 10px; margin-bottom: 10px; border-radius: 4px; font-size: 0.9em; }
         
-        /* 圖片大小設定 */
         .edu-logo { 
             width: 100px; 
             max-height: 100px; 
             object-fit: contain; 
         }
 
-        /* 修正 NCYU 原始圖片留白過多導致的偏左問題 */
         .ncyu-special {
             transform: scale(1.4); 
             transform-origin: right center; 
@@ -64,7 +59,6 @@
             object-fit: contain; 
         }
 
-        /* 通用的左右對齊容器 */
         .flex-header {
             display: flex;
             justify-content: space-between;
@@ -72,7 +66,7 @@
             margin-bottom: 5px;
         }
         
-        /* Tab 切換邏輯核心 */
+        /* Tab 切換邏輯 */
         .tab-radio { display: none; } 
         .tab-nav { background-color: #285078; padding: 10px 0; text-align: center; display: flex; justify-content: center; margin-bottom: 20px; }
         .tab-label { color: white; margin: 0 15px; font-weight: bold; padding: 10px 15px; border-radius: 4px; cursor: pointer; transition: background-color 0.3s; }
@@ -103,14 +97,14 @@
             </header>
             
             <nav class="tab-nav">
-                <label for="tab1-radio" class="tab-label label1">學歷與專業技能</label>
+                <label for="tab1-radio" class="tab-label label1">個人簡介</label>
                 <label for="tab2-radio" class="tab-label label2">工作經歷</label>
                 <label for="tab3-radio" class="tab-label label3">論文著作與專案成果</label>
             </nav>
 
             <div id="content-1" class="tab-content">
                 <section class="section">
-                    <h2>聯絡資訊 </h2>
+                    <h2>聯絡資訊</h2>
                     <p><strong>姓名:</strong> 陳冠中 (Jack Chen)</p>
                     <p><strong>Email:</strong> <a href="mailto:jack61903@gmail.com">jack61903@gmail.com</a></p>
                     <p><strong>電話:</strong> +886-928-550-996</p>
@@ -118,7 +112,7 @@
                 </section>
 
                 <section class="section">
-                    <h2>學歷 </h2>
+                    <h2>學歷</h2>
                     
                     <div style="margin-bottom: 25px; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
                         <div class="flex-header">
@@ -142,6 +136,39 @@
                                  class="edu-logo ">
                         </div>
                         <p style="margin-top: 5px;"><em>2015/09 - 2019/06</em></p>
+                    </div>
+                    
+                </section>
+
+                <section class="section">
+                    <h2>專業技能</h2>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <strong>IVD product development</strong>
+                        <ul class="skill-list">
+                            
+                            <li>ISO13485</li>
+                            
+                            <li>ISO14971</li>
+                            
+                            <li>IVDR</li>
+                            
+                            <li>QMS</li>
+                            
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <strong>Molecular Biology</strong>
+                        <ul class="skill-list">
+                            
+                            <li>nucleic acid extraction</li>
+                            
+                            <li>NAAT-based reagent</li>
+                            
+                            <li>lyophilization</li>
+                            
+                        </ul>
                     </div>
                     
                 </section>
@@ -200,44 +227,12 @@
                     </div>
                     
                 </section>
-
-                <section class="section">
-                    <h2>專業技能</h2>
-                    
-                    <div style="margin-bottom: 20px;">
-                        <strong>IVD product development</strong>
-                        <ul class="skill-list">
-                            
-                            <li>ISO13485</li>
-                            
-                            <li>ISO14971</li>
-                            
-                            <li>IVDR</li>
-                            
-                            <li>QMS</li>
-                            
-                        </ul>
-                    </div>
-                    
-                    <div style="margin-bottom: 20px;">
-                        <strong>Molecular Biology</strong>
-                        <ul class="skill-list">
-                            
-                            <li>nucleic acid extraction</li>
-                            
-                            <li>NAAT-based reagent</li>
-                            
-                            <li>lyophilization</li>
-                            
-                        </ul>
-                    </div>
-                    
-                </section>
             </div>
 
             <div id="content-3" class="tab-content">
                 <section class="section">
-                    <h2>此頁面內容規劃中...</h2>
+                    <h2>論文著作與專案成果</h2>
+                    <p>此頁面內容規劃中...</p>
                 </section>
             </div>
         </div>
