@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ data.name }} - 履歷</title>
     <style>
-        /* 基礎樣式 */
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; }
         
         .container { 
@@ -41,30 +40,10 @@
         .skill-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; }
         .skill-list li { background-color: #007bff; color: white; padding: 5px 10px; margin-right: 10px; margin-bottom: 10px; border-radius: 4px; font-size: 0.9em; }
         
-        .edu-logo { 
-            width: 100px; 
-            max-height: 100px; 
-            object-fit: contain; 
-        }
-
-        .ncyu-special {
-            transform: scale(1.4); 
-            transform-origin: right center; 
-            margin-right: -20px; 
-        }
-
-        .company-logo { 
-            width: 100px; 
-            max-height: 80px; 
-            object-fit: contain; 
-        }
-
-        .flex-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 5px;
-        }
+        .edu-logo { width: 100px; max-height: 100px; object-fit: contain; }
+        .ncyu-special { transform: scale(1.4); transform-origin: right center; margin-right: -20px; }
+        .company-logo { width: 100px; max-height: 80px; object-fit: contain; }
+        .flex-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
         
         /* Tab 切換邏輯 */
         .tab-radio { display: none; } 
@@ -75,10 +54,14 @@
         #tab1-radio:checked ~ .tab-nav .label1,
         #tab2-radio:checked ~ .tab-nav .label2,
         #tab3-radio:checked ~ .tab-nav .label3 { background-color: #007bff; }
-
         #tab1-radio:checked ~ #content-1,
         #tab2-radio:checked ~ #content-2,
         #tab3-radio:checked ~ #content-3 { display: block; }
+
+        /* 投資組合項目樣式 */
+        .portfolio-item { margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 15px; }
+        .portfolio-item h3 { margin: 0; color: #007bff; }
+        .portfolio-item p { margin: 10px 0 0 0; font-size: 0.95em; }
     </style>
 </head>
 <body>
@@ -120,8 +103,7 @@
                                 <h3 style="margin: 0;">{{ edu.degree }}</h3>
                                 <strong style="color: #555;">{{ edu.school }}</strong>
                             </div>
-                            <img src="{{ edu.logo }}" alt="校徽" 
-                                 class="edu-logo {% if 'NCYU' in edu.logo %}ncyu-special{% endif %}">
+                            <img src="{{ edu.logo }}" alt="校徽" class="edu-logo {% if 'NCYU' in edu.logo %}ncyu-special{% endif %}">
                         </div>
                         <p style="margin-top: 5px;"><em>{{ edu.period }}</em></p>
                     </div>
@@ -167,10 +149,17 @@
             </div>
 
             <div id="content-3" class="tab-content">
+                {% for group in data.portfolio %}
                 <section class="section">
-                    <h2>論文著作與專案成果</h2>
-                    <p>此頁面內容規劃中...</p>
+                    <h2>{{ group.type }}</h2>
+                    {% for item in group.items %}
+                    <div class="portfolio-item">
+                        <h3>{{ item.title }}</h3>
+                        <p>{{ item.desc }}</p>
+                    </div>
+                    {% endfor %}
                 </section>
+                {% endfor %}
             </div>
         </div>
     </div>
