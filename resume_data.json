@@ -26,12 +26,16 @@
             "logo": "./static/images/NOVASCOPE.jpg",
             "period": "2023/03 - Now",
             "achievements": [
-                "Alzheimer disease biomarker diagnosis platform development (BCR)",
-                "Achieved platform's third-party certification with R^2 > 0.9 correlation to market-leader technology.",
-                "Optimized diagnosis process, reducing verification time by 50%.",
-                "Established SIP using Micro-FTIR for surface functional group identification.",
-                "Executed Bio-FET trials and clinical performance evaluation design.",
-                "Established documents for ISO 13485 certification."
+                "1. 阿茲海默症 (Alzheimer's disease) biomarker 檢測平台開發。",
+                "2. 設計與完成平台第三方認證，與市場龍頭技術結果呈高度相關 (R > 0.9)，達 pg 等級之靈敏度。",
+                "3. 優化檢驗流程，可縮減 50% 檢驗時間。",
+                "4. 高通量檢驗平台構想設計與效能評估。",
+                "5. 使用 Micro-FTIR 驗證固體表面改質官能基與均勻度分析，建立產線檢驗規範。",
+                "6. 選用穩定性高之生物分子化學修飾法與共價鍵結於晶片表面，增加安定性。",
+                "7. 生物檢測試驗設計 (抗原抗體、核酸雜交方法學開發)。",
+                "8. Bio-FET 試驗執行、平台可行性評估、臨床診斷效能試驗設計。",
+                "9. 建立 ISO13485 三階文件與四階表單，協助取得ISO13485認證。",
+                "10. 跨部門/領域溝通、討論。"
             ]
         },
         {
@@ -40,10 +44,28 @@
             "logo": "./static/images/TANBEAD.jpg",
             "period": "2021/11 - 2023/03",
             "achievements": [
-                "Develop automated nucleic acid extraction and qPCR detection reagents.",
-                "Pioneered development of lyophilized qPCR reagents.",
-                "Managed production and purification of recombinant proteins.",
-                "Authored technical documentation for IVD medical devices (IVDR and EUA)."
+                "專案產品研發
+                1. 產品研發與效能驗證：自動化核酸萃取試劑、qPCR 檢測試劑 (產品上市)，與市場龍頭具相等之效能。
+
+                2. qPCR 冷凍乾燥試劑拓荒開發，安定性可達半年以上保存期限並與液態版本維持相等效能。
+
+                3. 酵素與抗體純化相關重組蛋白質生產與純化 (E. coli system)。
+
+                4. 微生物檢驗規範訂定，維持產品低菌品質。
+
+                5. 原料、半成品、成品規格書與檢驗規範訂定，確立產線品質穩定。
+
+
+
+                文件撰寫與技術移轉
+
+                1. 體外診斷醫療器材技術文件、IVDR 、EUA 技術文件撰寫，成功取得IVDR認證。
+
+                2. 產品技術報告撰寫與技術轉移。
+
+                3. 設計開發檔案與風險評估管理撰寫與維護，維持ISO13485品質。
+
+                4. 產品BOM表建立、包裝指引書、產品標籤製作。."
             ]
         }
     ],
