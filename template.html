@@ -44,17 +44,13 @@
         .bar-bg { background: #E9ECEF; height: 10px; border-radius: 10px; margin-top: 12px; overflow: hidden; }
         .bar-fill { background: linear-gradient(90deg, var(--accent-teal), var(--primary-blue)); height: 100%; border-radius: 10px; }
         h2 { color: var(--primary-blue); font-size: 1.6rem; margin-top: 50px; border-bottom: 2px solid #eee; padding-bottom: 12px; }
-        ul { padding-left: 20px; }
-        a { color: var(--accent-teal); text-decoration: none; }
     </style>
 </head>
 <body>
     <header class="hero">
         <div class="glass-card">
-            <h1 style="margin:0; color: var(--primary-blue); font-size: 2.5rem;">{{ data.name }}</h1>
-            <p style="margin: 15px 0; color: #555;">
-                📧 {{ data.contact.email }} | 📱 {{ data.contact.phone }}
-            </p>
+            <h1>{{ data.name }}</h1>
+            <p>📧 {{ data.contact.email }} | 📱 {{ data.contact.phone }}</p>
             <div style="margin-top:20px;">
                 {% for category in data.skill_categories %}
                     {% for tag in category.tags %}
@@ -82,22 +78,21 @@
             {% endfor %}
         </div>
 
-        <h2>重點專案與著作 / Portfolio</h2>
-        {% for section in data.portfolio %}
-        <h3 style="color: #666; margin-top: 30px;">{{ section.p_type }}</h3>
+        <h2>重點專案 / Portfolio</h2>
         <div class="bento-grid">
-            {% for item in section.p_items %}
-            <div class="card">
-                <h4 style="margin:0 0 10px 0; color: var(--primary-blue);">{{ item.title }}</h4>
-                <p style="font-size: 0.9rem; color: #666;">{{ item.desc }}</p>
-                <div class="bar-bg">
-                    <div class="bar-fill" style="width: {{ item.kpi }}%;"></div>
+            {% for section in data.portfolio %}
+                {% for item in section.p_items %}
+                <div class="card">
+                    <small style="color:var(--accent-teal); font-weight:bold;">{{ section.p_type }}</small>
+                    <h3 style="margin:10px 0 8px;">{{ item.title }}</h3>
+                    <p style="font-size: 0.9rem; color: #666;">{{ item.desc }}</p>
+                    <div class="bar-bg">
+                        <div class="bar-fill" style="width: {{ item.kpi }}%;"></div>
+                    </div>
                 </div>
-                <small style="display:block; margin-top:5px; color: var(--accent-teal);">達成率: {{ item.kpi }}%</small>
-            </div>
+                {% endfor %}
             {% endfor %}
         </div>
-        {% endfor %}
     </main>
 </body>
 </html>
