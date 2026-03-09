@@ -3,63 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ data.name }} | Resume</title>
+    <title>{{ data.name }} | Professional Resume</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-blue: #004B87;
-            --accent-teal: #00A3AD;
+            --primary-blue: #004B87;    /* 深海藍 */
+            --accent-teal: #00A3AD;     /* 湖水綠 */
             --bg-light: #F8F9FA;
-            --glass: rgba(255, 255, 255, 0.85);
+            --glass: rgba(255, 255, 255, 0.88);
         }
-        body { font-family: 'Inter', 'Noto Sans TC', sans-serif; background: var(--bg-light); margin: 0; color: #333; }
+        body { font-family: 'Inter', 'Noto Sans TC', sans-serif; background: var(--bg-light); margin: 0; color: #333; line-height: 1.6; }
         
-        /* Hero Glassmorphism */
-        .hero { background: linear-gradient(135deg, var(--primary-blue), #002D52); height: 400px; display: flex; align-items: center; justify-content: center; padding: 20px; }
-        .glass-card { background: var(--glass); backdrop-filter: blur(10px); border-radius: 20px; padding: 40px; max-width: 800px; width: 100%; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        /* Hero Section with Glassmorphism */
+        .hero { 
+            background: linear-gradient(135deg, var(--primary-blue), #002D52); 
+            height: 380px; display: flex; align-items: center; justify-content: center; padding: 20px;
+            background-image: radial-gradient(var(--accent-teal) 0.5px, transparent 0.5px);
+            background-size: 30px 30px;
+        }
+        .glass-card { 
+            background: var(--glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border-radius: 24px; padding: 40px; max-width: 850px; width: 100%; text-align: center; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .container { max-width: 1000px; margin: -50px auto 60px; padding: 20px; }
         
         /* Bento Grid */
-        .container { max-width: 1000px; margin: -50px auto 50px; padding: 20px; }
-        .bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
-        .card { background: white; border-radius: 15px; padding: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid transparent; }
-        .card:hover { transform: translateY(-5px); border-color: var(--accent-teal); }
+        .bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+        .card { 
+            background: white; border-radius: 18px; padding: 28px; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04); transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            border: 1px solid #eee; position: relative; overflow: hidden;
+        }
+        .card:hover { transform: translateY(-8px); border-color: var(--accent-teal); box-shadow: 0 12px 30px rgba(0,163,173,0.12); }
 
         /* Timeline */
-        .timeline { border-left: 3px solid var(--accent-teal); margin: 30px 0; padding-left: 30px; }
-        .timeline-item { position: relative; margin-bottom: 40px; }
-        .timeline-item::before { content: ''; position: absolute; left: -39px; top: 5px; width: 15px; height: 15px; background: white; border: 3px solid var(--primary-blue); border-radius: 50%; }
+        .timeline { border-left: 3px solid var(--accent-teal); margin: 20px 0 40px 10px; padding-left: 35px; }
+        .timeline-item { position: relative; margin-bottom: 45px; }
+        .timeline-item::before { 
+            content: ''; position: absolute; left: -44.5px; top: 6px; width: 16px; height: 16px; 
+            background: white; border: 4px solid var(--primary-blue); border-radius: 50%; 
+        }
 
-        /* Pills */
-        .pill { display: inline-block; background: rgba(0, 163, 173, 0.1); color: var(--primary-blue); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; margin: 3px; font-weight: 600; }
+        /* Pill Tags */
+        .pill { 
+            display: inline-block; background: rgba(0, 163, 173, 0.08); color: var(--primary-blue); 
+            padding: 5px 14px; border-radius: 50px; font-size: 0.8rem; margin: 4px; font-weight: 600; 
+            border: 1px solid rgba(0, 163, 173, 0.15);
+        }
         
         /* Progress Bar */
-        .bar-bg { background: #eee; height: 8px; border-radius: 10px; margin-top: 10px; }
-        .bar-fill { background: var(--accent-teal); height: 100%; border-radius: 10px; transition: 1s; }
+        .bar-bg { background: #E9ECEF; height: 10px; border-radius: 10px; margin-top: 12px; overflow: hidden; }
+        .bar-fill { background: linear-gradient(90deg, var(--accent-teal), var(--primary-blue)); height: 100%; border-radius: 10px; }
 
-        h2 { color: var(--primary-blue); border-bottom: 2px solid var(--accent-teal); padding-bottom: 10px; margin-top: 50px; }
+        h2 { color: var(--primary-blue); font-size: 1.6rem; margin-top: 50px; border-bottom: 2px solid #eee; padding-bottom: 12px; display: flex; align-items: center; }
+        h2::before { content: "🧬"; margin-right: 10px; font-size: 1.2rem; }
+        ul { padding-left: 20px; font-size: 0.95rem; color: #444; }
+        li { margin-bottom: 8px; }
     </style>
 </head>
 <body>
-    <div class="hero">
+    <header class="hero">
         <div class="glass-card">
-            <h1 style="margin:0;">{{ data.name }}</h1>
-            <p>{{ data.contact.email }} | {{ data.contact.phone }}</p>
+            <h1 style="margin:0; color: var(--primary-blue); font-size: 2.5rem;">{{ data.name }}</h1>
+            <p style="margin: 15px 0; color: #555; font-size: 1.1rem;">
+                <a href="mailto:{{ data.contact.email }}" style="color:inherit; text-decoration:none;">📧 {{ data.contact.email }}</a> | 📱 {{ data.contact.phone }}
+            </p>
             <div style="margin-top:20px;">
                 {% for category in data.skill_categories %}
                     {% for tag in category.tags %}<span class="pill">{{ tag }}</span>{% endfor %}
                 {% endfor %}
             </div>
         </div>
-    </div>
+    </header>
 
-    <div class="container">
-        <h2>職涯歷程</h2>
+    <main class="container">
+        <h2>職涯歷程 / Experience</h2>
         <div class="timeline">
             {% for exp in data.experiences %}
             <div class="timeline-item">
-                <strong style="color:var(--accent-teal)">{{ exp.period }}</strong>
-                <h3 style="margin:5px 0;">{{ exp.title }}</h3>
-                <div style="font-weight:600; color:var(--primary-blue)">{{ exp.company }}</div>
+                <span style="color:var(--accent-teal); font-weight:700; font-size: 0.9rem;">{{ exp.period }}</span>
+                <h3 style="margin:5px 0 3px;">{{ exp.title }}</h3>
+                <div style="font-weight:600; color:var(--primary-blue); margin-bottom:12px;">{{ exp.company }}</div>
                 <ul>
                     {% for ach in exp.achievements %}<li>{{ ach }}</li>{% endfor %}
                 </ul>
@@ -67,19 +93,17 @@
             {% endfor %}
         </div>
 
-        <h2>重點專案</h2>
+        <h2>重點專案與成果 / Portfolio</h2>
         <div class="bento-grid">
             {% for group in data.portfolio %}
                 {% for item in group.p_items %}
                 <div class="card">
-                    <small style="color:var(--accent-teal)">{{ group.p_type }}</small>
-                    <h3 style="margin:10px 0;">{{ item.title }}</h3>
-                    <p style="font-size:0.9rem; color:#666;">{{ item.desc }}</p>
+                    <small style="color:var(--accent-teal); font-weight:bold; text-transform: uppercase;">{{ group.p_type }}</small>
+                    <h3 style="margin:10px 0 8px; font-size: 1.15rem;">{{ item.title }}</h3>
+                    <p style="font-size:0.9rem; color:#636E72; margin-bottom:15px;">{{ item.desc }}</p>
+                    {% if item.kpi %}
+                    <div style="display:flex; justify-content:space-between; font-size:0.8rem; font-weight: 600;">
+                        <span>專案達成率</span><span>{{ item.kpi }}%</span>
+                    </div>
                     <div class="bar-bg"><div class="bar-fill" style="width: {{ item.kpi }}%;"></div></div>
-                </div>
-                {% endfor %}
-            {% endfor %}
-        </div>
-    </div>
-</body>
-</html>
+                    {% endif %}
