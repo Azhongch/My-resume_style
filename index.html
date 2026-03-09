@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>陳冠中 (Jack Chen) - Professional Resume</title>
+    <title>Professional Resume | Biotech & R&D</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Sans+TC:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-blue: #004B87;    /* 深海藍 - 權威與穩定 */
-            --accent-teal: #00A3AD;     /* 湖水綠 - 創新與生醫 */
-            --bg-light: #F8F9FA;        /* 淺灰白底 */
+            --primary-blue: #004B87;    /* 深海藍 */
+            --accent-teal: #00A3AD;     /* 湖水綠 */
+            --bg-light: #F8F9FA;        /* 淺灰白 */
             --text-dark: #2D3436;
-            --glass-bg: rgba(255, 255, 255, 0.75);
-            --shadow-soft: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+            --glass-bg: rgba(255, 255, 255, 0.82);
+            --shadow-soft: 0 10px 30px rgba(0, 75, 135, 0.08);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         body {
@@ -20,410 +21,176 @@
             background-color: var(--bg-light);
             color: var(--text-dark);
             margin: 0;
-            line-height: 1.7;
-            /* 低調的生醫幾何背景裝飾 */
-            background-image: radial-gradient(var(--accent-teal) 0.5px, transparent 0.5px);
-            background-size: 30px 30px;
-            background-attachment: fixed;
-            opacity: 0.95;
+            line-height: 1.6;
+            /* 低調的 DNA 螺旋背景建議 (透過 CSS Pattern 模擬) */
+            background-image: 
+                radial-gradient(circle at 2px 2px, rgba(0, 163, 173, 0.05) 1px, transparent 0);
+            background-size: 32px 32px;
         }
 
-        /* --- Hero Section (Glassmorphism) --- */
-        .hero-section {
-            height: 400px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
+        /* --- Hero Section: Glassmorphism --- */
+        .hero {
+            height: 450px;
+            background: linear-gradient(145deg, var(--primary-blue), #002D52);
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 0 20px;
             position: relative;
-            overflow: hidden;
         }
 
-        /* 模擬 DNA 螺旋的背景装饰（簡化版） */
-        .hero-section::after {
-            content: "";
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><path d="M10 10 Q 50 90 90 10" stroke="white" fill="none" opacity="0.1"/></svg>');
-            opacity: 0.2;
-            animation: drift 20s linear infinite;
-        }
-
-        .glass-card {
+        .glass-header {
             background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: var(--shadow-soft);
-            max-width: 800px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            max-width: 900px;
             width: 100%;
             text-align: center;
-            z-index: 1;
-        }
-
-        /* --- Vertical Timeline --- */
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 40px auto;
-            padding-left: 30px;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 3px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--primary-blue), var(--accent-teal));
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 40px;
-            padding-left: 20px;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -26px;
-            top: 5px;
-            width: 15px;
-            height: 15px;
-            background: white;
-            border: 3px solid var(--accent-teal);
-            border-radius: 50%;
-            z-index: 2;
+            transform: translateY(30px);
         }
 
         /* --- Bento Grid / Card Design --- */
+        .container { max-width: 1100px; margin: 80px auto; padding: 0 25px; }
+
         .bento-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
         }
 
-        .bento-card {
-            background: white;
-            border-radius: 16px;
-            padding: 24px;
-            border: 1px solid #eee;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 28px;
+            border: 1px solid rgba(0, 75, 135, 0.05);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .bento-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(0, 75, 135, 0.1);
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 163, 173, 0.12);
             border-color: var(--accent-teal);
         }
 
         /* --- Pill Tags --- */
-        .pill-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 10px;
-        }
-
+        .tag-group { display: flex; flex-wrap: wrap; gap: 8px; margin: 15px 0; }
         .pill {
-            background: #EBF7F8;
+            background: rgba(0, 163, 173, 0.08);
             color: var(--primary-blue);
-            padding: 6px 16px;
+            padding: 4px 14px;
             border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            border: 1px solid rgba(0, 163, 173, 0.2);
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(0, 163, 173, 0.15);
         }
 
-        /* --- Progress Bar --- */
-        .kpi-bar-container {
-            background: #eee;
+        /* --- Data Visualization: Progress Bar --- */
+        .kpi-section { margin-top: auto; padding-top: 15px; border-top: 1px dashed #eee; }
+        .kpi-header { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.85rem; }
+        .progress-container {
+            background: #E9ECEF;
             border-radius: 10px;
-            height: 8px;
-            margin: 10px 0;
+            height: 10px;
             overflow: hidden;
         }
-
-        .kpi-bar-fill {
-            background: linear-gradient(90deg, var(--primary-blue), var(--accent-teal));
+        .progress-bar {
             height: 100%;
+            background: linear-gradient(90deg, var(--accent-teal), var(--primary-blue));
             border-radius: 10px;
+            transition: width 1s ease-in-out;
         }
 
-        @keyframes drift { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        /* --- Vertical Timeline --- */
+        .timeline { border-left: 3px solid #E1E8ED; margin-left: 20px; padding: 20px 0; }
+        .timeline-item { position: relative; padding-left: 35px; margin-bottom: 50px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -11px;
+            top: 5px;
+            width: 18px;
+            height: 18px;
+            background: #fff;
+            border: 4px solid var(--accent-teal);
+            border-radius: 50%;
+        }
+
+        h2 { color: var(--primary-blue); font-weight: 700; margin-bottom: 30px; display: flex; align-items: center; }
+        h2::before { content: ''; width: 12px; height: 12px; background: var(--accent-teal); margin-right: 12px; border-radius: 2px; }
     </style>
 </head>
 <body>
-    <section class="hero-section">
-        <div class="glass-card">
-            <h1 style="color: var(--primary-blue); margin-bottom: 10px;">陳冠中 (Jack Chen)</h1>
-            <p style="font-size: 1.1rem; color: #555;">資深研發工程師 | 分子生物技術與 IVD 產品專家</p>
-            <div class="pill-container" style="justify-content: center;">
+
+    <header class="hero">
+        <div class="glass-header">
+            <h1 style="margin:0; font-size: 2.5rem; color: var(--primary-blue);">{{ data.name }}</h1>
+            <p style="color: #636E72; font-size: 1.1rem; margin: 15px 0;">分子生物研究員 / 產品經理 (PM)</p>
+            <div class="tag-group" style="justify-content: center;">
+                <span class="pill">IVD 產品開發</span>
                 <span class="pill">ISO 13485</span>
-                <span class="pill">IVDR 認證</span>
-                <span class="pill">qPCR 凍乾技術</span>
+                <span class="pill">臨床試驗管理</span>
             </div>
         </div>
-    </section>
+    </header>
 
-    <div style="max-width: 1000px; margin: -50px auto 50px; padding: 0 20px;">
-        <h2 style="color: var(--primary-blue); border-left: 5px solid var(--accent-teal); padding-left: 15px;">核心專案成果</h2>
+    <main class="container">
+        
+        <h2>重點專案與核心技能</h2>
         <div class="bento-grid">
-            
-                
-                <div class="bento-card">
-                    <span style="color: var(--accent-teal); font-size: 0.8rem; font-weight: bold; text-transform: uppercase;">專案成果</span>
-                    <h3 style="margin: 10px 0;">Bio-FET based Diagnostic Assay 開發與優化</h3>
-                    <p style="font-size: 0.9rem; color: #666;">研發 BCR 技術應用於阿茲海默症生物標記檢測，成功通過林口長庚醫院檢驗科第三方驗證。</p>
-                    
-                    <div style="margin-top: 15px;">
-                        <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
-                            <span>技術達成率</span>
-                            <strong>95%</strong>
+            {% for p_group in data.portfolio %}
+                {% for p_item in p_group.p_items %}
+                <div class="card">
+                    <div>
+                        <small style="color: var(--accent-teal); font-weight: 700;">{{ p_group.p_type }}</small>
+                        <h3 style="margin: 8px 0 15px 0;">{{ p_item.title }}</h3>
+                        <p style="font-size: 0.95rem; color: #636E72;">{{ p_item.desc }}</p>
+                        <div class="tag-group">
+                            {% for tag in p_item.tags %}
+                            <span class="pill">{{ tag }}</span>
+                            {% endfor %}
                         </div>
-                        <div class="kpi-bar-container"><div class="kpi-bar-fill" style="width: 95%;"></div></div>
+                    </div>
+                    
+                    <div class="kpi-section">
+                        <div class="kpi-header">
+                            <span>{{ p_item.kpi_label }}</span>
+                            <strong>{{ p_item.kpi_value }}%</strong>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: {{ p_item.kpi_value }}%;"></div>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="bento-card">
-                    <span style="color: var(--accent-teal); font-size: 0.8rem; font-weight: bold; text-transform: uppercase;">專案成果</span>
-                    <h3 style="margin: 10px 0;">2X qPCR Master Mix 優化與凍乾拓荒開發</h3>
-                    <p style="font-size: 0.9rem; color: #666;">效能與領先品牌相等，液態版本已成功上市，凍乾版本加速安定性已可達半年之保存期限。</p>
-                    
-                    <div style="margin-top: 15px;">
-                        <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
-                            <span>技術達成率</span>
-                            <strong>95%</strong>
-                        </div>
-                        <div class="kpi-bar-container"><div class="kpi-bar-fill" style="width: 95%;"></div></div>
-                    </div>
-                </div>
-                
-                <div class="bento-card">
-                    <span style="color: var(--accent-teal); font-size: 0.8rem; font-weight: bold; text-transform: uppercase;">專案成果</span>
-                    <h3 style="margin: 10px 0;">SARS-CoV-2 Multiplex RT-qPCR diagnostic kit 開發</h3>
-                    <p style="font-size: 0.9rem; color: #666;">完成臨床前測試基準，並撰寫TFDA EUA文件申請審查。</p>
-                    
-                    <div style="margin-top: 15px;">
-                        <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
-                            <span>技術達成率</span>
-                            <strong>95%</strong>
-                        </div>
-                        <div class="kpi-bar-container"><div class="kpi-bar-fill" style="width: 95%;"></div></div>
-                    </div>
-                </div>
-                
-                <div class="bento-card">
-                    <span style="color: var(--accent-teal); font-size: 0.8rem; font-weight: bold; text-transform: uppercase;">專案成果</span>
-                    <h3 style="margin: 10px 0;">Tissue genomic DNA extraction kit (IVD) 效能與縮時優化</h3>
-                    <p style="font-size: 0.9rem; color: #666;">多數組織檢體 A260/A230 > 1.8，可於45分鐘內完成核酸萃取。</p>
-                    
-                    <div style="margin-top: 15px;">
-                        <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
-                            <span>技術達成率</span>
-                            <strong>95%</strong>
-                        </div>
-                        <div class="kpi-bar-container"><div class="kpi-bar-fill" style="width: 95%;"></div></div>
-                    </div>
-                </div>
-                
-            
-                
-                <div class="bento-card">
-                    <span style="color: var(--accent-teal); font-size: 0.8rem; font-weight: bold; text-transform: uppercase;">客戶拜訪與需求調查</span>
-                    <h3 style="margin: 10px 0;">醫學中心醫院合作</h3>
-                    <p style="font-size: 0.9rem; color: #666;">參與阿茲海默症生物標記於臨床檢驗中所需之規格定義與需求調查。</p>
-                    
-                    <div style="margin-top: 15px;">
-                        <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
-                            <span>技術達成率</span>
-                            <strong>95%</strong>
-                        </div>
-                        <div class="kpi-bar-container"><div class="kpi-bar-fill" style="width: 95%;"></div></div>
-                    </div>
-                </div>
-                
-                <div class="bento-card">
-                    <span style="color: var(--accent-teal); font-size: 0.8rem; font-weight: bold; text-transform: uppercase;">客戶拜訪與需求調查</span>
-                    <h3 style="margin: 10px 0;">臺灣人體生物資料庫 (Taiwan Biobank)</h3>
-                    <p style="font-size: 0.9rem; color: #666;">導入 4-6 mL 濃縮血液之全自動 gDNA 萃取流程，成功取代知名大廠半自動化流程。</p>
-                    
-                    <div style="margin-top: 15px;">
-                        <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
-                            <span>技術達成率</span>
-                            <strong>95%</strong>
-                        </div>
-                        <div class="kpi-bar-container"><div class="kpi-bar-fill" style="width: 95%;"></div></div>
-                    </div>
-                </div>
-                
-                <div class="bento-card">
-                    <span style="color: var(--accent-teal); font-size: 0.8rem; font-weight: bold; text-transform: uppercase;">客戶拜訪與需求調查</span>
-                    <h3 style="margin: 10px 0;">醫學檢驗所技術優化</h3>
-                    <p style="font-size: 0.9rem; color: #666;">指導醫檢師分生操作，並優化 SARS-CoV-2 核酸萃取平台，大幅縮短病患檢體篩檢時間。</p>
-                    
-                    <div style="margin-top: 15px;">
-                        <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
-                            <span>技術達成率</span>
-                            <strong>95%</strong>
-                        </div>
-                        <div class="kpi-bar-container"><div class="kpi-bar-fill" style="width: 95%;"></div></div>
-                    </div>
-                </div>
-                
-            
-                
-                <div class="bento-card">
-                    <span style="color: var(--accent-teal); font-size: 0.8rem; font-weight: bold; text-transform: uppercase;">論文著作</span>
-                    <h3 style="margin: 10px 0;">白色念珠菌微衛星 CAI 多樣性對環境壓力與毒性因子 ECE1 之影響 (2020)</h3>
-                    <p style="font-size: 0.9rem; color: #666;">探討 Rlm1p 麩醯胺酸重複數對毒力與抗藥性的影響。</p>
-                    
-                    <div style="margin-top: 15px;">
-                        <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
-                            <span>技術達成率</span>
-                            <strong>95%</strong>
-                        </div>
-                        <div class="kpi-bar-container"><div class="kpi-bar-fill" style="width: 95%;"></div></div>
-                    </div>
-                </div>
-                
-                <div class="bento-card">
-                    <span style="color: var(--accent-teal); font-size: 0.8rem; font-weight: bold; text-transform: uppercase;">論文著作</span>
-                    <h3 style="margin: 10px 0;">應用伽瑪輻射誘變改良少孢根黴優化天貝異黃酮含量 (2020)</h3>
-                    <p style="font-size: 0.9rem; color: #666;">第一作者發表於嘉大農林學報。透過輻射誘變改良菌種，提升發酵風味與營養價值。</p>
-                    
-                    <div style="margin-top: 15px;">
-                        <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
-                            <span>技術達成率</span>
-                            <strong>95%</strong>
-                        </div>
-                        <div class="kpi-bar-container"><div class="kpi-bar-fill" style="width: 95%;"></div></div>
-                    </div>
-                </div>
-                
-            
-                
-                <div class="bento-card">
-                    <span style="color: var(--accent-teal); font-size: 0.8rem; font-weight: bold; text-transform: uppercase;">研討會海報</span>
-                    <h3 style="margin: 10px 0;">伽瑪輻射改良 Rhizopus oligosporus 蛋白酶與脂肪酶活性 (2019)</h3>
-                    <p style="font-size: 0.9rem; color: #666;">第一作者發表於 TTQAS 年度大會暨創新食品開發論壇。</p>
-                    
-                    <div style="margin-top: 15px;">
-                        <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
-                            <span>技術達成率</span>
-                            <strong>95%</strong>
-                        </div>
-                        <div class="kpi-bar-container"><div class="kpi-bar-fill" style="width: 95%;"></div></div>
-                    </div>
-                </div>
-                
-                <div class="bento-card">
-                    <span style="color: var(--accent-teal); font-size: 0.8rem; font-weight: bold; text-transform: uppercase;">研討會海報</span>
-                    <h3 style="margin: 10px 0;">探討乳酸菌代謝產物抑制白色念珠菌生長之效果 (2018)</h3>
-                    <p style="font-size: 0.9rem; color: #666;">第一作者發表於第 23 屆細菌學研討會。</p>
-                    
-                    <div style="margin-top: 15px;">
-                        <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
-                            <span>技術達成率</span>
-                            <strong>95%</strong>
-                        </div>
-                        <div class="kpi-bar-container"><div class="kpi-bar-fill" style="width: 95%;"></div></div>
-                    </div>
-                </div>
-                
-            
+                {% endfor %}
+            {% endfor %}
         </div>
 
-        <h2 style="color: var(--primary-blue); margin-top: 60px; border-left: 5px solid var(--accent-teal); padding-left: 15px;">職涯歷程</h2>
+        <h2>職涯發展歷程</h2>
         <div class="timeline">
-            
+            {% for exp in data.experiences %}
             <div class="timeline-item">
-                <span style="color: var(--accent-teal); font-weight: bold;">2023/03 - Now</span>
-                <h3 style="margin: 5px 0;">高級研發工程師 / 研發工程師</h3>
-                <strong style="color: var(--primary-blue);">美商長典生技股份有限公司</strong>
-                <ul style="font-size: 0.9rem; margin-top: 10px; color: #444;">
-                    
-                    <li>阿茲海默症 (Alzheimer's disease) biomarker 檢測平台開發 (BCR)。</li>
-                    
-                    <li>設計並完成平台第三方認證，結果與市場龍頭技術高度相關 (R > 0.9)，靈敏度達 pg 等級。</li>
-                    
-                    <li>優化檢驗流程，成功縮減 50% 檢驗時間；構想設計高通量檢驗平台並執行效能評估。</li>
-                    
-                    <li>使用 Micro-FTIR 驗證固體表面改質官能基與均勻度分析，並建立產線檢驗規範。</li>
-                    
-                    <li>選用高穩定性生物分子化學修飾法進行共價鍵結，增加晶片表面安定性。</li>
-                    
-                    <li>設計生物檢測試驗 (抗原抗體、核酸雜交方法學) 與執行 Bio-FET 臨床診斷效能試驗。</li>
-                    
-                    <li>建立 ISO13485 三階文件與四階表單，協助公司順利取得 ISO13485 認證。</li>
-                    
-                    <li>負責跨部門與跨領域之技術溝通、討論與專案進度管理。</li>
-                    
+                <span style="font-size: 0.9rem; font-weight: 700; color: var(--accent-teal);">{{ exp.period }}</span>
+                <h3 style="margin: 5px 0;">{{ exp.title }}</h3>
+                <h4 style="margin: 0; color: var(--primary-blue); font-weight: 500;">{{ exp.company }}</h4>
+                <ul style="margin-top: 15px; font-size: 0.95rem; color: #444;">
+                    {% for ach in exp.achievements %}
+                    <li style="margin-bottom: 8px;">{{ ach }}</li>
+                    {% endfor %}
                 </ul>
             </div>
-            
-            <div class="timeline-item">
-                <span style="color: var(--accent-teal); font-weight: bold;">2021/11 - 2023/03</span>
-                <h3 style="margin: 5px 0;">研發工程師</h3>
-                <strong style="color: var(--primary-blue);">台灣圓點奈米技術股份有限公司</strong>
-                <ul style="font-size: 0.9rem; margin-top: 10px; color: #444;">
-                    
-                    <li>[專案研發] 優化自動化核酸萃取試劑與 qPCR 檢測試劑開發，效能等同市場龍頭品牌。</li>
-                    
-                    <li>[技術拓荒] 拓荒開發 qPCR 冷凍乾燥試劑，安定性達半年以上並維持與液態版本相等之效能。</li>
-                    
-                    <li>[生化生產] 負責重組蛋白質 (E. coli system) 生產與純化技術。</li>
-                    
-                    <li>[品質控管] 訂定微生物檢驗規範及原料/半成品/成品規格書，確保產線品質。</li>
-                    
-                    <li>[法規認證] 撰寫體外診斷醫療器材 (IVDR、EUA) 技術文件與報告，成功取得 IVDR 認證。</li>
-                    
-                    <li>[體系維護] 撰寫設計開發檔案 (DHF) 與風險評估管理，建立產品 BOM 表、包裝指引與標籤。</li>
-                    
-                </ul>
-            </div>
-            
-            <div class="timeline-item">
-                <span style="color: var(--accent-teal); font-weight: bold;">2021/06 - 2021/10</span>
-                <h3 style="margin: 5px 0;">工程師</h3>
-                <strong style="color: var(--primary-blue);">圓銘醫事檢驗所</strong>
-                <ul style="font-size: 0.9rem; margin-top: 10px; color: #444;">
-                    
-                    <li>規劃並建立醫學檢驗實驗室，包含 P2 實驗室管理制度與感控流程建立。</li>
-                    
-                    <li>負責檢驗試劑效能評估、分子檢驗技術 Troubleshooting 及醫檢師教育訓練。</li>
-                    
-                    <li>協助新冠肺炎 (COVID-19) PCR 檢驗事務執行及相關行政庶務管理。</li>
-                    
-                </ul>
-            </div>
-            
-            <div class="timeline-item">
-                <span style="color: var(--accent-teal); font-weight: bold;">2020/10 - 2020/12</span>
-                <h3 style="margin: 5px 0;">專任研究助理</h3>
-                <strong style="color: var(--primary-blue);">國立嘉義大學</strong>
-                <ul style="font-size: 0.9rem; margin-top: 10px; color: #444;">
-                    
-                    <li>[基礎研究] 執行 Cloning、CRISPR/Cas9 質體設計及白色念珠菌基因轉殖菌株建構。</li>
-                    
-                    <li>[產品開發] 精釀啤酒、紅白酒、蜂蜜酒等酒類產品開發，包含風味菌株篩選與製程優化。</li>
-                    
-                    <li>[平台建立] 建立黃豆固態發酵平台 (天貝)，優化糖苷配基異黃酮生產製程與無菌管控。</li>
-                    
-                    <li>[技術指導] 指導啤酒工作坊及勞動部職訓局自釀實作課程。</li>
-                    
-                </ul>
-            </div>
-            
+            {% endfor %}
         </div>
-    </div>
+
+    </main>
+
 </body>
 </html>
