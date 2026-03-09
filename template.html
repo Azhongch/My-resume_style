@@ -9,7 +9,7 @@
         :root {
             --primary-color: #004B87;    /* 醫藥權威藍 */
             --accent-color: #00A3AD;     /* 生技創新綠 */
-            --bg-color: #F4F7F9;        /* 實驗室潔淨灰 */
+            --bg-color: #F4F7F9;         /* 實驗室潔淨灰 */
             --text-main: #2C3E50;
             --text-light: #5A6C7D;
             --white: #ffffff;
@@ -40,7 +40,6 @@
 
         .header { border-bottom: 2px solid #f0f4f8; padding-bottom: 30px; margin-bottom: 30px; }
         .header h1 { color: var(--primary-color); font-size: 2.4em; margin: 0; font-weight: 700; }
-        .header .subtitle { color: var(--accent-color); font-size: 1.1em; font-weight: 600; margin-top: 5px; text-transform: uppercase; letter-spacing: 1px; }
 
         /* Tabs 切換系統 */
         .tab-radio { display: none; } 
@@ -91,6 +90,16 @@
         .flex-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
         .company-logo, .edu-logo { width: 90px; max-height: 60px; object-fit: contain; }
 
+        /* --- 針對 NCYU Logo 的特定放大設定 --- */
+        img[src$="NCYU.png"] { 
+            width: 140px !important;    /* 強制增加寬度 */
+            max-height: 90px !important; /* 強制增加高度上限 */
+            transform: scale(1.2);      /* 視覺縮放 1.2 倍 */
+            transform-origin: right;    /* 靠右縮放，避免蓋到文字 */
+            margin-top: -5px;           /* 微調垂直位置 */
+        }
+        /* ---------------------------------- */
+
         /* Portfolio 項目 */
         .portfolio-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
         .portfolio-card { 
@@ -112,6 +121,8 @@
             .flex-header { flex-direction: column-reverse; }
             .contact-grid { grid-template-columns: 1fr; }
             .tab-nav { overflow-x: auto; }
+            /* 行動裝置縮放調整 */
+            img[src$="NCYU.png"] { transform: scale(1); width: 100px !important; margin-bottom: 10px; }
         }
     </style>
 </head>
@@ -150,7 +161,7 @@
                     <h2>教育背景</h2>
                     {% for edu in data.education %}
                     <div class="flex-header" style="margin-bottom: 20px;">
-                        <div>
+                        <div style="flex: 1;">
                             <h3 style="margin: 0; font-size: 1.15em;">{{ edu.degree }}</h3>
                             <div style="color: var(--text-light);">{{ edu.school }} | {{ edu.period }}</div>
                         </div>
